@@ -39,10 +39,9 @@ def writer(n, dir=''):
     if n < 2:
         return None
     else:
-        results = {}
+        results = {'prime_factors': [], 'unique_divisors': []}
         for i in range(n+1):
-            results[i] = {}
-            results[i]['prime_factors'] = factorizer(i)
-            results[i]['unique_divisors'] = higher_factors(i)
+            results['prime_factors'].append(factorizer(i))
+            results['unique_divisors'].append(higher_factors(i))
         with open(dir+'/prime_factors.json', 'w', encoding='utf-8') as file:
             json.dump(results, file, ensure_ascii=False, indent=4)
